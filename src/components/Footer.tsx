@@ -90,20 +90,30 @@ export default function Footer({ setActiveView, onSubmitLead }: FooterProps) {
           {/* Contact Details */}
           <div>
             <h3 className="font-display text-base font-semibold text-white tracking-wider mb-4">Corporate Office</h3>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-3.5 text-xs">
               <li className="flex items-start space-x-2.5">
                 <MapPin className="h-5 w-5 text-orange-500 shrink-0 mt-0.5" />
-                <span>No. 45, Kasturba Nagar, 2nd Main Road, Adyar, Chennai - 600020</span>
+                <span className="text-neutral-300">Villa No : 44, Humming Gardens, OMR Road, Kelambakkam - 603103</span>
               </li>
-              <li className="flex items-center space-x-2.5">
-                <Phone className="h-4 w-4 text-orange-500 shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-white transition-colors">+91 98765 43210</a>
+              <li className="flex items-start space-x-2.5">
+                <Phone className="h-4 w-4 text-orange-500 shrink-0 mt-1" />
+                <div className="flex flex-col text-neutral-300">
+                  <span className="text-[9px] font-mono tracking-widest text-neutral-500 uppercase">Managing Director</span>
+                  <a href="tel:+919551234597" className="hover:text-white transition-colors font-medium">H Charles Immanuvel: +91 95512 34597</a>
+                </div>
               </li>
-              <li className="flex items-center space-x-2.5">
+              <li className="flex items-start space-x-2.5">
+                <Phone className="h-4 w-4 text-orange-500 shrink-0 mt-1" />
+                <div className="flex flex-col text-neutral-300">
+                  <span className="text-[9px] font-mono tracking-widest text-neutral-500 uppercase">CEO</span>
+                  <a href="tel:+919884770108" className="hover:text-white transition-colors font-medium">S Prasanna: +91 98847 70108</a>
+                </div>
+              </li>
+              <li className="flex items-center space-x-2.5 text-neutral-300">
                 <Mail className="h-4 w-4 text-orange-500 shrink-0" />
                 <a href="mailto:info@nhhomes.in" className="hover:text-white transition-colors">info@nhhomes.in</a>
               </li>
-              <li className="flex items-center space-x-2.5">
+              <li className="flex items-center space-x-2.5 text-neutral-300">
                 <Clock className="h-4 w-4 text-orange-500 shrink-0" />
                 <span>Mon - Sat: 9:00 AM - 6:30 PM</span>
               </li>

@@ -219,6 +219,19 @@ export const services: Service[] = [
       "Electrical rewire and plumbing overhauls"
     ],
     details: "NH Homes has special experts for restoration. If you have an old building that needs structural strengthening, waterproofing, a modern kitchen extension, or an elegant modern facade update to boost its commercial/rental value, we offer safe, fast-track engineering solutions without disrupting the existing framework."
+  },
+  {
+    id: "earth-mover-services",
+    title: "Earth Mover & Site Services",
+    description: "Heavy-duty machinery solutions including excavation, earth moving, site development, and land clearing for safe foundation works.",
+    iconName: "Truck",
+    features: [
+      "Heavy excavation & professional foundation pits",
+      "Grading, earth moving & sand levelling services",
+      "Full-scale site development & access roads setup",
+      "Rapid land clearing, stump extraction & debris hauling"
+    ],
+    details: "NH Homes operates a modern, captive fleet of heavy earth-moving machinery. Our licensed operators deliver precision engineering works, including bulk excavation, professional site grading, complete site development, and thorough land clearing across Chennai to ensure a perfectly prepared canvas for structural concrete foundations."
   }
 ];
 
@@ -322,16 +335,22 @@ export const teamMembers: TeamMember[] = [
     bio: "Over 15 years of civil engineering and property development expertise in Chennai. He established NH Homes with the vision of providing absolute transparent pricing and top-tier construction quality to every family."
   },
   {
+    name: "H Charles Immanuvel",
+    role: "Managing Director",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80",
+    bio: "Co-directs strategic growth, corporate governance, and joint venture promotions at NH Homes. His focus on strict legal clearances and robust builder agreements ensures safety for land owners. Contact: +91 95512 34597."
+  },
+  {
+    name: "S Prasanna",
+    role: "Chief Executive Officer",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+    bio: "Directs operations, technical engineering standards, and developer logistics at NH Homes. Ensures compliance with premium construction plans and on-time structural deliveries across Chennai. Contact: +91 98847 70108."
+  },
+  {
     name: "Ar. Sneha Nair",
     role: "Chief Architect",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
     bio: "A graduate of School of Architecture & Planning, Anna University, specializing in minimalist luxury layouts, eco-friendly ventilation structures, and high-end modern residential elevations."
-  },
-  {
-    name: "Er. Rajesh Anbu",
-    role: "Head of Project Execution",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
-    bio: "With 12+ years of on-site project management experience, Rajesh oversees our engineers, coordinates raw material logistics, and guarantees strict compliance with NH Homes' on-time delivery clause."
   }
 ];
 
