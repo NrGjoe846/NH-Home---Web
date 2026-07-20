@@ -129,14 +129,18 @@ app.post("/api/chat", async (req, res) => {
 
       if (userMessage.includes("project") || userMessage.includes("grandeur") || userMessage.includes("county") || userMessage.includes("villa")) {
         simulatedReply = "NH Homes features premium signature projects: **NH Grandeur** (2 & 3 BHK Apartments in OMR, starting at ₹55L), **NH Orange County** (Luxury 3 BHK in Adyar, starting at ₹1.2Cr), and **NH Elite Villas** (Ultra-luxury smart villas in ECR, starting at ₹2.1Cr). All our projects are fully approved by DTCP/CMDA and RERA with 100% transparent documentation.";
+      } else if (userMessage.includes("earth mover") || userMessage.includes("excavation") || userMessage.includes("clearing") || userMessage.includes("moving") || userMessage.includes("site development")) {
+        simulatedReply = "We provide full heavy-duty **Earth Mover & Site Services**! Our professional fleet handles **precision excavation**, **earth moving/grading**, **site development**, and **land clearing** (debris and stump removal) across Chennai. This ensures your construction has an engineered, perfectly graded, robust foundation.";
       } else if (userMessage.includes("joint") || userMessage.includes("venture") || userMessage.includes("land")) {
-        simulatedReply = "We specialize in high-value Joint Ventures for land owners in Chennai. We offer flexible revenue-sharing options (e.g., 60:40 or 50:50), substantial advance amounts, and take care of 100% of the government approvals, architectural design, and premium construction. You can fill out our Joint Venture form in the sidebar/portal for a free legal screening of your property!";
+        simulatedReply = "We specialize in high-value Joint Ventures for land owners in Chennai under the direction of our Managing Director, H Charles Immanuvel. We offer flexible revenue-sharing options (e.g., 60:40 or 50:50), substantial advance amounts, and take care of 100% of the government approvals, architectural design, and premium construction. You can fill out our Joint Venture form on our client portal!";
       } else if (userMessage.includes("emi") || userMessage.includes("calculator") || userMessage.includes("loan")) {
         simulatedReply = "You can calculate your monthly home loan repayments instantly using our interactive **EMI Calculator**! We are approved partners with leading banks like SBI, HDFC, LIC, and ICICI, which offer up to 85% funding. A quick approximation for a ₹60L loan at 8.5% interest for 20 years would be about ₹52,000 per month.";
       } else if (userMessage.includes("site") || userMessage.includes("visit") || userMessage.includes("book")) {
-        simulatedReply = "I can definitely help schedule a site visit for you! Please specify your preferred project, date, and time. Alternatively, you can use the instant **Book Site Visit** button in the dashboard to lock in a time slot with automated SMS/Email confirmations.";
+        simulatedReply = "I can definitely help schedule a site visit for you! Please specify your preferred project, date, and time. Alternatively, you can use the instant **Book Site Visit** button in the dashboard to lock in a time slot with automated confirmations.";
+      } else if (userMessage.includes("address") || userMessage.includes("office") || userMessage.includes("location") || userMessage.includes("contact") || userMessage.includes("phone")) {
+        simulatedReply = "NH Homes is headquartered at **Villa No : 44, Humming Gardens, OMR Road, Kelambakkam - 603103**. You can reach our Managing Director **H Charles Immanuvel** at **+91 95512 34597**, and our CEO **S Prasanna** at **+91 98847 70108**.";
       } else {
-        simulatedReply = "Hello! I am your NH Homes AI Property Assistant. I can tell you about our ongoing DTCP-approved apartments, villas, and plots, explain our profitable Joint Venture partnership models, calculate your Home Loan EMI, or schedule a free site visit for you. How can I assist you today?";
+        simulatedReply = "Hello! I am your NH Homes AI Property Assistant. I can tell you about our ongoing DTCP-approved apartments, villas, and plots, explain our profitable Joint Venture partnership models, calculate your Home Loan EMI, describe our heavy earth mover excavation services, or schedule a free site visit for you. How can I assist you today?";
       }
 
       // Add a small disclaimer about offline mode
@@ -158,6 +162,12 @@ app.post("/api/chat", async (req, res) => {
         systemInstruction: `You are the NH Homes AI Property Assistant, a professional, factual, and incredibly helpful 24/7 smart assistant for NH HOMES (Home Promoters, Real Estate Development, and Construction).
         NH HOMES is a premium real estate promoter and builder based in Chennai, established in 2016 (10 years of experience), with 50+ projects and 150+ happy families.
         
+        Our Corporate Headquarters is located at: Villa No : 44, Humming Gardens, OMR Road, Kelambakkam - 603103.
+        Our leadership team consists of:
+        - Er. Nehemiah Nesanathan (Founder & Chairman)
+        - H Charles Immanuvel (Managing Director) - Direct Line: +91 95512 34597
+        - S Prasanna (Chief Executive Officer / CEO) - Direct Line: +91 98847 70108
+        
         Our logo features Orange, Dark Grey, and White branding. Our values focus on complete transparency, on-time delivery with penalty clauses, 100% legal documentation, and experienced engineers.
 
         Signature Active Projects:
@@ -166,10 +176,11 @@ app.post("/api/chat", async (req, res) => {
         3. NH Elite Villas: Ultra-Luxury 4 BHK Smart Villas in ECR, Chennai. Area: 2500 - 4000 Sq.ft. Price: Starting from ₹2.1 Crores. Status: Ongoing. DTCP & RERA Approved. Private terrace, home automation, near beach.
         4. NH Green Meadows: Premium plots and villa development in Guduvanchery, Chennai. Area: 1200 - 2400 Sq.ft. Price: Starting from ₹30 Lakhs. Status: Completed. DTCP Approved. Ready for construction.
 
-        Construction Packages (Per Sq.Ft rates):
+        Construction & Heavy Equipment Packages:
         - Basic Plan: ₹1,800 / Sq.Ft (Standard materials, branded fittings, basic interior woodwork)
-        - Premium Plan: ₹2,200 / Sq.Ft (Teakwood main door, premium tiles, modular kitchen, branded bathroom fixtures like Parryware/Hindware)
-        - Luxury Plan: ₹2,600 / Sq.Ft (Italian marble/granite floors, structural design flexibility, extensive home automation, high-end jaguar/kohler fittings, complete interior woodwork and designer false ceilings)
+        - Premium Plan: ₹2,200 / Sq.Ft (Teakwood main door, premium tiles, modular kitchen, branded bathroom fixtures)
+        - Luxury Plan: ₹2,600 / Sq.Ft (Italian marble/granite floors, structural design flexibility, extensive home automation, high-end jaguar/kohler fittings, complete interior woodwork)
+        - Earth Mover & Site Services: Heavy equipment works including foundation excavation, earth moving, site development, and land clearing.
 
         Joint Ventures (JV) for Land Owners:
         - We help land owners develop their empty plots or old houses into modern apartments/villas.
@@ -180,7 +191,7 @@ app.post("/api/chat", async (req, res) => {
         Your Tone:
         - Welcoming, highly professional, polite, and reassuring.
         - Emphasize safety, transparent pricing, and quality engineering.
-        - Offer to help them calculate EMI, estimate construction cost, or schedule site visits.
+        - Offer to help them calculate EMI, estimate construction cost, describe excavation/earth moving site works, or schedule site visits.
         - If they want to book a visit or JV evaluation, ask for their contact info and guide them to use the interactive forms on our portal.`
       }
     });

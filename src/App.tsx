@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Home, Building2, Calculator, Handshake, Info, Mail, PhoneCall, 
   Sparkles, ShieldCheck, Award, Users, ChevronDown, Check, Clock, 
   MapPin, CheckCircle, ArrowRight, MessageSquare, Briefcase, FileCode,
-  FileCheck, Shield, HelpCircle, Phone, FileText
+  FileCheck, Shield, HelpCircle, Phone, FileText, ChevronLeft, ChevronRight,
+  Tractor, Mountain, Layers, Trees, Shovel
 } from "lucide-react";
 
 // Modular Sub-components
@@ -23,10 +24,171 @@ import BlogsSection from "./components/BlogsSection";
 // Data Source
 import { signatureProjects, services, teamMembers, testimonials, faqs } from "./data/projects";
 
+// Reusable Earth Mover Services Section
+function EarthMoverSection({ onContactClick }: { onContactClick: () => void }) {
+  const earthMoverCards = [
+    {
+      title: "Excavation",
+      icon: Shovel,
+      badge: "Heavy Crawler",
+      description: "Precision basement dig-outs, foundation trenching, and deep structural excavation. Supervised by licensed safety officers using state-of-the-art hydraulic excavators.",
+      features: ["Deep structural foundation pits", "Precision trenching for utilities", "Mass earth excavation & removal"]
+    },
+    {
+      title: "Earth Moving",
+      icon: Mountain,
+      badge: "Bulk Relocation",
+      description: "Bulk soil relocation, site grading, backfilling, and sand levelling. We handle high-volume terrain shaping to prepare highly load-bearing sub-bases.",
+      features: ["Fine & rough site grading", "Premium sand backfilling", "Volumetric soil relocation"]
+    },
+    {
+      title: "Site Development",
+      icon: Layers,
+      badge: "Builder Canvas",
+      description: "Converting raw, uneven parcels into builder-ready structural canvases. Layout marking, plot demarcation, and heavy-vehicle access road setup.",
+      features: ["Temporary site access roads", "FSI marking & planning support", "Precise elevation slope control"]
+    },
+    {
+      title: "Land Clearing",
+      icon: Trees,
+      badge: "Debris & Stump",
+      description: "Thorough removal of thick foliage, stubborn tree stump extraction, heavy rock crushing, and complete debris evacuation prior to slab concrete casting.",
+      features: ["Deep root & stump extraction", "Rock breaking & concrete crushing", "Eco-friendly debris clearance"]
+    }
+  ];
+
+  return (
+    <div className="space-y-10 rounded-3xl border border-neutral-200 bg-white p-6 md:p-10 shadow-sm" id="earth-mover-services-block">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="space-y-2 max-w-2xl">
+          <span className="inline-flex items-center space-x-1.5 rounded-full bg-orange-100 text-orange-700 border border-orange-200 px-3 py-1 text-xs font-bold uppercase tracking-wider font-mono">
+            <Tractor className="h-3.5 w-3.5" />
+            <span>Heavy Equipment Division</span>
+          </span>
+          <h3 className="font-display text-2xl font-extrabold text-neutral-900 tracking-tight">
+            Earth Mover & Site Preparation Services
+          </h3>
+          <p className="text-xs text-neutral-600 leading-relaxed">
+            NH Homes operates a high-capacity captive fleet of heavy earth-moving machinery. We execute safe, rapid, and precise site development, excavation, and clearing to ensure Chennai's buildings rest on engineered, rock-solid sub-structures.
+          </p>
+        </div>
+        <div className="shrink-0 flex gap-2">
+          <button 
+            onClick={onContactClick}
+            className="rounded-xl bg-orange-600 text-white font-semibold text-xs px-5 py-3 hover:bg-orange-700 transition-colors flex items-center space-x-2"
+          >
+            <span>Enquire Machinery Booking</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {earthMoverCards.map((card) => {
+          const IconComponent = card.icon;
+          return (
+            <div 
+              key={card.title}
+              className="rounded-2xl border border-neutral-100 bg-neutral-50/50 p-5 space-y-4 hover:border-orange-200 hover:bg-white hover:shadow-md transition-all group flex flex-col justify-between"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-50 text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                    <IconComponent className="h-5 w-5" />
+                  </div>
+                  <span className="text-[9px] font-mono font-bold uppercase text-neutral-400 bg-neutral-100 px-2 py-0.5 rounded">
+                    {card.badge}
+                  </span>
+                </div>
+
+                <div className="space-y-1">
+                  <h4 className="font-display text-base font-bold text-neutral-900">{card.title}</h4>
+                  <p className="text-xs text-neutral-600 leading-relaxed text-justify min-h-[72px]">
+                    {card.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-2 border-t border-neutral-100 pt-3 mt-2">
+                <span className="block text-[9px] font-mono tracking-wider uppercase text-neutral-400 font-bold">Capabilities</span>
+                <ul className="space-y-1.5 text-xs text-neutral-500">
+                  {card.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="text-orange-500 mr-1.5 font-bold">✓</span>
+                      <span className="text-[11px] leading-tight text-neutral-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Leadership Hotline Box */}
+      <div className="rounded-2xl bg-orange-50 border border-orange-200/60 p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex items-center space-x-3 text-xs">
+          <div className="h-9 w-9 rounded-full bg-orange-600/10 flex items-center justify-center text-orange-600 shrink-0">
+            <Phone className="h-4.5 w-4.5" />
+          </div>
+          <div>
+            <span className="font-bold text-neutral-900 block leading-tight">Direct Equipment Scheduler Hotlines</span>
+            <span className="text-neutral-600 text-[11px]">Talk directly to our directors for fast-track operator deployments and corporate logistics.</span>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-4 text-xs font-mono shrink-0">
+          <div className="text-center bg-white px-3.5 py-1.5 rounded-lg border border-neutral-200">
+            <span className="text-[9px] text-neutral-400 uppercase block tracking-wider font-bold">H Charles (MD)</span>
+            <a href="tel:+919551234597" className="text-orange-600 hover:underline font-bold">+91 95512 34597</a>
+          </div>
+          <div className="text-center bg-white px-3.5 py-1.5 rounded-lg border border-neutral-200">
+            <span className="text-[9px] text-neutral-400 uppercase block tracking-wider font-bold">S Prasanna (CEO)</span>
+            <a href="tel:+919884770108" className="text-orange-600 hover:underline font-bold">+91 98847 70108</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [activeView, setActiveView] = useState("home");
   const [isBookModalOpen, setIsBookModalOpen] = useState(false);
   const [selectedProjectForVisit, setSelectedProjectForVisit] = useState<string | undefined>(undefined);
+
+  // Hero Slides Data & Automatic Loop State
+  const heroSlides = [
+    {
+      badge: "Premium Real Estate Promoter & Builder",
+      title: "Building Dreams.",
+      highlight: "Creating Landmarks.",
+      desc: "Delivering architectural masterpieces, high-yield flat promotions, and profitable joint ventures across Chennai. We promise 100% legal clearance, transparent pricing, and complete structural guarantees.",
+      img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1400&q=80",
+    },
+    {
+      badge: "CMDA & DTCP Approved Luxury Flats",
+      title: "Elevate Your Lifestyle in",
+      highlight: "Boutique Smart Homes.",
+      desc: "Explore highly-ventilated luxury apartments across prime areas in Chennai. Features Alexa-ready home automation, double-compounded parking, and infinity terrace gardens.",
+      img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1400&q=80",
+    },
+    {
+      badge: "Heavy Machinery & Foundation Engineering",
+      title: "Precision Site Preparation &",
+      highlight: "Earth Mover Services.",
+      desc: "Providing professional excavation, sand leveling, grading, land clearing, and site development. We deploy a premium fleet of heavy machinery to build a rock-solid structural foundation.",
+      img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80",
+    },
+  ];
+
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   // FAQ Accordion states
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(null);
@@ -168,39 +330,150 @@ export default function App() {
               {activeView === "home" && (
                 <div className="space-y-16" id="home-view-container">
                   {/* Hero banner section */}
-                  <div className="relative rounded-3xl overflow-hidden bg-neutral-950 text-white min-h-[500px] flex items-center p-6 md:p-12 border border-neutral-800 shadow-2xl">
-                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1400&q=80')] bg-cover bg-center opacity-30 mix-blend-overlay" />
+                  <div className="relative rounded-3xl overflow-hidden bg-neutral-950 text-white min-h-[500px] flex items-center p-6 md:p-12 border border-neutral-800 shadow-2xl group">
+                    
+                    {/* Background Images with Cross-Fade & Ken Burns Zoom Effect */}
+                    <div className="absolute inset-0">
+                      <AnimatePresence mode="popLayout">
+                        <motion.div
+                          key={currentHeroSlide}
+                          initial={{ opacity: 0, scale: 1.15 }}
+                          animate={{ opacity: 0.45, scale: 1.02 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 1.2, ease: "easeInOut" }}
+                          className="absolute inset-0 bg-cover bg-center mix-blend-overlay"
+                          style={{ backgroundImage: `url(${heroSlides[currentHeroSlide].img})` }}
+                        />
+                      </AnimatePresence>
+                    </div>
+
+                    {/* Dark gradient mask */}
                     <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-900/80 to-transparent" />
                     
-                    <div className="relative max-w-2xl space-y-6">
-                      <span className="inline-flex items-center space-x-1 rounded-full bg-orange-500/15 border border-orange-500/30 px-3 py-1 text-xs font-bold text-orange-400">
-                        <Sparkles className="h-3.5 w-3.5" />
-                        <span>Premium Real Estate Promoter & Builder</span>
-                      </span>
-                      
-                      <h1 className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-                        Building Dreams. <br />
-                        <span className="text-orange-500">Creating Landmarks.</span>
-                      </h1>
-                      
-                      <p className="text-sm md:text-base text-neutral-300 leading-relaxed">
-                        Delivering architectural masterpieces, high-yield flat promotions, and profitable joint ventures across Chennai. We promise 100% legal clearance, transparent milestone pricing, and complete structural guarantees.
-                      </p>
-                      
-                      <div className="flex flex-wrap gap-3.5 pt-2">
-                        <button 
-                          onClick={() => setActiveView("projects")}
-                          className="rounded-xl bg-orange-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-orange-700 hover:shadow-lg hover:shadow-orange-500/20 active:scale-95"
+                    {/* Floating Left & Right manual controls (visible on hover) */}
+                    <button
+                      onClick={() => setCurrentHeroSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1))}
+                      className="absolute left-4 z-20 rounded-full bg-neutral-900/50 p-2 text-white/70 hover:text-white hover:bg-orange-600 border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto cursor-pointer"
+                    >
+                      <ChevronLeft className="h-5 w-5" />
+                    </button>
+                    <button
+                      onClick={() => setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length)}
+                      className="absolute right-4 z-20 rounded-full bg-neutral-900/50 p-2 text-white/70 hover:text-white hover:bg-orange-600 border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto cursor-pointer"
+                    >
+                      <ChevronRight className="h-5 w-5" />
+                    </button>
+
+                    {/* Slide Content with Staggered Staged Entry */}
+                    <div className="relative max-w-2xl space-y-6 z-10">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={currentHeroSlide}
+                          initial="hidden"
+                          animate="visible"
+                          exit="exit"
+                          variants={{
+                            hidden: { opacity: 0, y: 20 },
+                            visible: { 
+                              opacity: 1, 
+                              y: 0,
+                              transition: {
+                                staggerChildren: 0.15,
+                                delayChildren: 0.1
+                              }
+                            },
+                            exit: { opacity: 0, y: -15, transition: { duration: 0.2 } }
+                          }}
+                          className="space-y-6"
                         >
-                          Explore Projects
-                        </button>
-                        <button 
-                          onClick={() => handleOpenVisitWithProject()}
-                          className="rounded-xl border border-neutral-300 bg-white/10 backdrop-blur-sm px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20"
-                        >
-                          Book Site Visit
-                        </button>
-                      </div>
+                          <motion.span 
+                            variants={{
+                              hidden: { opacity: 0, x: -15 },
+                              visible: { opacity: 1, x: 0 }
+                            }}
+                            className="inline-flex items-center space-x-1 rounded-full bg-orange-500/15 border border-orange-500/30 px-3 py-1 text-xs font-bold text-orange-400"
+                          >
+                            <Sparkles className="h-3.5 w-3.5 text-orange-500 animate-pulse" />
+                            <span>{heroSlides[currentHeroSlide].badge}</span>
+                          </motion.span>
+                          
+                          <motion.h1 
+                            variants={{
+                              hidden: { opacity: 0, y: 15 },
+                              visible: { opacity: 1, y: 0 }
+                            }}
+                            className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-tight"
+                          >
+                            {heroSlides[currentHeroSlide].title} <br />
+                            <span className="text-orange-500">{heroSlides[currentHeroSlide].highlight}</span>
+                          </motion.h1>
+                          
+                          <motion.p 
+                            variants={{
+                              hidden: { opacity: 0, y: 15 },
+                              visible: { opacity: 1, y: 0 }
+                            }}
+                            className="text-sm md:text-base text-neutral-300 leading-relaxed font-sans"
+                          >
+                            {heroSlides[currentHeroSlide].desc}
+                          </motion.p>
+                          
+                          <motion.div 
+                            variants={{
+                              hidden: { opacity: 0, y: 15 },
+                              visible: { opacity: 1, y: 0 }
+                            }}
+                            className="flex flex-wrap gap-3.5 pt-2"
+                          >
+                            {currentHeroSlide === 2 ? (
+                              <button 
+                                onClick={() => setActiveView("services")}
+                                className="rounded-xl bg-orange-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-orange-700 hover:shadow-lg hover:shadow-orange-500/20 active:scale-95"
+                              >
+                                Explore Heavy Services
+                              </button>
+                            ) : (
+                              <button 
+                                onClick={() => setActiveView("projects")}
+                                className="rounded-xl bg-orange-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-orange-700 hover:shadow-lg hover:shadow-orange-500/20 active:scale-95"
+                              >
+                                Explore Projects
+                              </button>
+                            )}
+                            <button 
+                              onClick={() => handleOpenVisitWithProject()}
+                              className="rounded-xl border border-neutral-300 bg-white/10 backdrop-blur-sm px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/20 active:scale-95"
+                            >
+                              Book Site Visit
+                            </button>
+                          </motion.div>
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
+
+                    {/* Progress indicators and slider dots */}
+                    <div className="absolute bottom-4 left-6 md:left-12 flex items-center space-x-3 z-10">
+                      {heroSlides.map((_, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => setCurrentHeroSlide(idx)}
+                          className={`h-2.5 rounded-full transition-all duration-300 ${
+                            currentHeroSlide === idx ? "bg-orange-500 w-8" : "bg-white/35 hover:bg-white/60 w-2.5"
+                          }`}
+                          aria-label={`Go to slide ${idx + 1}`}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Slide automatic timer indicator */}
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-neutral-900/40 z-10">
+                      <motion.div 
+                        key={currentHeroSlide}
+                        initial={{ width: "0%" }}
+                        animate={{ width: "100%" }}
+                        transition={{ duration: 6, ease: "linear" }}
+                        className="h-full bg-orange-500"
+                      />
                     </div>
                   </div>
 
@@ -309,11 +582,16 @@ export default function App() {
                     </div>
                   </div>
 
+                  {/* Earth Mover Services dedicated block */}
+                  <div className="pt-4">
+                    <EarthMoverSection onContactClick={() => setActiveView("contact")} />
+                  </div>
+
                   {/* Quick CTAs footer banner */}
                   <div className="rounded-3xl bg-orange-600 p-8 text-white text-center space-y-4 shadow-xl shadow-orange-500/10">
                     <h3 className="font-display text-xl md:text-2xl font-bold">Ready to Build Your Architectural Milestone?</h3>
                     <p className="text-xs text-orange-100 max-w-lg mx-auto leading-relaxed">
-                      Connect with Er. Nehemiah Nesanathan's core design committee. Schedule a free legal screening of your land documents or book a site visit today.
+                      Connect with H Charles Immanuvel and S Prasanna's executive design committee. Schedule a free legal screening of your land documents, discuss earth mover excavation packages, or book a site visit today.
                     </p>
                     <div className="flex justify-center gap-3 pt-2">
                       <button 
@@ -323,7 +601,7 @@ export default function App() {
                         Book Consultation
                       </button>
                       <a 
-                        href="https://wa.me/919876543210" 
+                        href="https://wa.me/919884770108" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="rounded-xl bg-white text-orange-600 border border-white font-semibold text-xs px-6 py-3 hover:bg-orange-50 transition-colors"
@@ -390,6 +668,11 @@ export default function App() {
                         </div>
                       </div>
                     ))}
+                  </div>
+
+                  {/* Dedicated Earth Mover Services Section */}
+                  <div className="pt-8">
+                    <EarthMoverSection onContactClick={() => setActiveView("contact")} />
                   </div>
                 </div>
               )}
@@ -523,8 +806,8 @@ export default function App() {
                   <div className="lg:col-span-7 rounded-2xl border border-neutral-200 bg-white p-6 md:p-8 shadow-sm space-y-4">
                     <div className="space-y-1">
                       <span className="text-xs font-mono font-bold tracking-widest text-orange-600 uppercase">CONTACT US</span>
-                      <h2 className="font-display text-2xl font-bold text-neutral-900">Connect With Er. Nehemiah's Committee</h2>
-                      <p className="text-xs text-neutral-500">Have queries about apartment promotions, building specifications, or want a free land evaluation? Get in touch today.</p>
+                      <h2 className="font-display text-2xl font-bold text-neutral-900">Connect With NH Homes Leadership</h2>
+                      <p className="text-xs text-neutral-500">Have queries about apartment promotions, building specifications, earth mover excavation services, or joint ventures? Get in touch today.</p>
                     </div>
 
                     <form onSubmit={handleGeneralContactSubmit} className="space-y-4 pt-2">
@@ -554,13 +837,13 @@ export default function App() {
                       </div>
 
                       <div className="space-y-1">
-                        <label className="text-[10px] font-mono font-bold tracking-wider uppercase text-neutral-400">Phone Number (e.g., +91 98765 43210)</label>
+                        <label className="text-[10px] font-mono font-bold tracking-wider uppercase text-neutral-400">Phone Number (e.g., +91 95512 34597)</label>
                         <input
                           type="tel"
                           required
                           value={contactPhone}
                           onChange={(e) => setContactPhone(e.target.value)}
-                          placeholder="+91 98765 43210"
+                          placeholder="+91 95512 34597"
                           className="w-full rounded-lg border border-neutral-200 px-3 py-2 text-xs outline-none focus:border-orange-500"
                         />
                       </div>
@@ -571,7 +854,7 @@ export default function App() {
                           required
                           value={contactMessage}
                           onChange={(e) => setContactMessage(e.target.value)}
-                          placeholder="Tell us about your property location, budget, or specifications required..."
+                          placeholder="Tell us about your property location, budget, site clearing / earth mover requirements, or specifications required..."
                           rows={4}
                           className="w-full rounded-lg border border-neutral-200 px-3 py-2 text-xs outline-none focus:border-orange-500 resize-none"
                         />
@@ -589,14 +872,14 @@ export default function App() {
                     {contactSubmitted && (
                       <div className="flex items-center space-x-1.5 rounded-lg bg-orange-50 p-3 border border-orange-200 text-xs text-orange-700 font-semibold animate-pulse">
                         <CheckCircle className="h-5 w-5 shrink-0 text-orange-600" />
-                        <span>Query dispatched! Er. Nehemiah's executive committee will call you in 24 hours.</span>
+                        <span>Query dispatched! Our executive committee will contact you in 24 hours.</span>
                       </div>
                     )}
                   </div>
 
                   {/* Right: Office Coordinates & Maps */}
                   <div className="lg:col-span-5 space-y-6">
-                    <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm space-y-4">
+                    <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm space-y-5">
                       <h3 className="font-display text-base font-bold text-neutral-900">Corporate Office Info</h3>
                       
                       <div className="space-y-4 text-xs">
@@ -604,19 +887,25 @@ export default function App() {
                           <MapPin className="h-5 w-5 text-orange-600 shrink-0 mt-0.5" />
                           <div>
                             <span className="font-bold text-neutral-800 block">Address Coordinates:</span>
-                            <span className="text-neutral-600">No. 45, Kasturba Nagar, 2nd Main Road, Adyar, Chennai - 600020</span>
+                            <span className="text-neutral-600">Villa No : 44, Humming Gardens, OMR Road, Kelambakkam - 603103</span>
                           </div>
                         </div>
 
-                        <div className="flex items-start space-x-3">
-                          <Phone className="h-4.5 w-4.5 text-orange-600 shrink-0 mt-0.5" />
-                          <div>
-                            <span className="font-bold text-neutral-800 block">Call Line support:</span>
-                            <a href="tel:+919876543210" className="text-neutral-600 hover:text-orange-600 font-mono">+91 98765 43210</a>
+                        <div className="flex items-start space-x-3 border-t border-neutral-100 pt-3">
+                          <Phone className="h-4.5 w-4.5 text-orange-600 shrink-0 mt-1" />
+                          <div className="space-y-2">
+                            <div>
+                              <span className="font-bold text-[10px] font-mono tracking-wider uppercase text-neutral-400 block">Managing Director Line:</span>
+                              <a href="tel:+919551234597" className="text-neutral-800 hover:text-orange-600 font-bold font-mono">+91 95512 34597 (H Charles Immanuvel)</a>
+                            </div>
+                            <div>
+                              <span className="font-bold text-[10px] font-mono tracking-wider uppercase text-neutral-400 block">CEO Line:</span>
+                              <a href="tel:+919884770108" className="text-neutral-800 hover:text-orange-600 font-bold font-mono">+91 98847 70108 (S Prasanna)</a>
+                            </div>
                           </div>
                         </div>
 
-                        <div className="flex items-start space-x-3">
+                        <div className="flex items-start space-x-3 border-t border-neutral-100 pt-3">
                           <Clock className="h-4.5 w-4.5 text-orange-600 shrink-0 mt-0.5" />
                           <div>
                             <span className="font-bold text-neutral-800 block">Working Hours:</span>
@@ -635,7 +924,7 @@ export default function App() {
                           <MapPin className="h-5 w-5" />
                         </div>
                         <span className="block font-display text-sm font-bold text-white mt-3 shadow-sm bg-neutral-950/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
-                          NH CORPORATE HEADQUARTERS, ADYAR
+                          NH HEADQUARTERS, HUMMING GARDENS
                         </span>
                       </div>
                     </div>
