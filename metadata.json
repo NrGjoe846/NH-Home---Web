@@ -1,0 +1,6 @@
+{
+  "name": "NH Homes",
+  "description": "Premium residential and commercial home promoters, joint venture developers, and property builders portal and dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
