@@ -36,9 +36,7 @@ export default function Navbar({ activeView, setActiveView, onBookSiteVisit }: N
           onClick={() => handleNavClick("home")}
           id="nav-logo"
         >
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-600 shadow-md shadow-orange-500/20">
-            <span className="font-display text-2xl font-bold text-white">NH</span>
-          </div>
+          <img src="/logo.png" alt="NH Homes Logo" className="h-16 w-auto object-contain" />
           <div>
             <span className="block font-display text-xl font-bold tracking-tight text-neutral-900">
               NH HOMES
