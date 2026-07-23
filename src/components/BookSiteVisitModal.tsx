@@ -61,8 +61,8 @@ export default function BookSiteVisitModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm" id="book-visit-modal-container">
       <div className="relative w-full max-w-lg rounded-2xl bg-white shadow-2xl border border-neutral-100 overflow-hidden">
-        {/* Banner header */}
-        <div className="bg-neutral-900 px-6 py-5 text-white">
+        {/* Header */}
+        <div className="bg-gradient-to-br from-neutral-600 via-neutral-800 to-neutral-950 px-6 py-5 text-white border-b border-neutral-600/50">
           <button
             onClick={onClose}
             className="absolute top-4 right-4 rounded-full bg-white/10 p-1.5 text-neutral-300 hover:bg-white/20 hover:text-white transition-colors"
@@ -70,11 +70,13 @@ export default function BookSiteVisitModal({
           >
             <X className="h-4 w-4" />
           </button>
-          <span className="text-[10px] font-mono tracking-widest text-orange-400 uppercase">
+          <span className="text-[10px] font-mono tracking-widest text-orange-400 uppercase font-bold">
             NH SIGNATURE EXPERIENCE
           </span>
-          <h3 className="font-display text-xl font-bold tracking-tight mt-0.5">Book Private Site Visit</h3>
-          <p className="text-xs text-neutral-400 mt-1">
+          <h3 className="font-display text-xl font-extrabold tracking-tight text-white mt-0.5">
+            Book Private Site Visit
+          </h3>
+          <p className="text-xs text-neutral-300 mt-1">
             Complimentary AC sedan cab pick-up and drop included for you and your family.
           </p>
         </div>
@@ -209,7 +211,7 @@ export default function BookSiteVisitModal({
             {/* CTA Submit Button */}
             <button
               type="submit"
-              className="w-full bg-orange-600 py-3 text-center text-sm font-semibold text-white rounded-lg hover:bg-orange-700 hover:shadow-lg transition-all active:scale-95 flex items-center justify-center space-x-2"
+              className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 py-3 text-center text-sm font-semibold text-white rounded-lg transition-all shadow-md active:scale-95 flex items-center justify-center space-x-2"
             >
               <Calendar className="h-4 w-4" />
               <span>Confirm Site Visit Reservation</span>

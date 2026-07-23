@@ -58,7 +58,7 @@ function EarthMoverSection({ onContactClick }: { onContactClick: () => void }) {
   ];
 
   return (
-    <div className="space-y-10 rounded-3xl border border-neutral-200 bg-white p-6 md:p-10 shadow-sm" id="earth-mover-services-block">
+    <div className="space-y-8 md:space-y-10 rounded-3xl border border-orange-200 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white p-4 sm:p-6 md:p-10 shadow-md" id="earth-mover-services-block">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div className="space-y-2 max-w-2xl">
           <span className="inline-flex items-center space-x-1.5 rounded-full bg-orange-100 text-orange-700 border border-orange-200 px-3 py-1 text-xs font-bold uppercase tracking-wider font-mono">
@@ -75,7 +75,7 @@ function EarthMoverSection({ onContactClick }: { onContactClick: () => void }) {
         <div className="shrink-0 flex gap-2">
           <button 
             onClick={onContactClick}
-            className="rounded-xl bg-orange-600 text-white font-semibold text-xs px-5 py-3 hover:bg-orange-700 transition-colors flex items-center space-x-2"
+            className="rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold text-xs px-5 py-3 hover:from-orange-600 hover:to-amber-600 transition-all shadow-md flex items-center space-x-2"
           >
             <span>Enquire Machinery Booking</span>
             <ArrowRight className="h-3.5 w-3.5" />
@@ -89,7 +89,7 @@ function EarthMoverSection({ onContactClick }: { onContactClick: () => void }) {
           return (
             <div 
               key={card.title}
-              className="rounded-2xl border border-neutral-100 bg-neutral-50/50 p-5 space-y-4 hover:border-orange-200 hover:bg-white hover:shadow-md transition-all group flex flex-col justify-between"
+              className="rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white p-5 space-y-4 hover:border-orange-300 hover:shadow-lg transition-all group flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -314,155 +314,154 @@ export default function App() {
       />
 
       {/* Main Section Content Router */}
-      <main className="flex-1 py-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeView}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-            >
-              
-              {/* ================= HOME VIEW ================= */}
-              {activeView === "home" && (
-                <div className="space-y-16" id="home-view-container">
-                  {/* Hero banner section */}
-                  <div className="relative rounded-3xl overflow-hidden bg-neutral-950 text-white min-h-[500px] flex items-center p-6 md:p-12 border border-neutral-800 shadow-2xl group">
+      <main className="flex-1">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeView}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+          >
+            
+            {/* ================= HOME VIEW ================= */}
+            {activeView === "home" && (
+              <div id="home-view-container">
+                {/* Hero banner section - Fully Edge-to-Edge Without Top/Side Gaps */}
+                <div className="relative w-full overflow-hidden bg-gradient-to-br from-neutral-600 via-neutral-800 to-neutral-950 text-white min-h-[90vh] md:min-h-screen flex items-center border-b border-neutral-600/50 shadow-2xl group">
                     
                     {/* Background Images with Cross-Fade & Ken Burns Zoom Effect */}
                     <div className="absolute inset-0">
                       <AnimatePresence mode="popLayout">
                         <motion.div
                           key={currentHeroSlide}
-                          initial={{ opacity: 0, scale: 1.15 }}
-                          animate={{ opacity: 0.45, scale: 1.02 }}
+                          initial={{ opacity: 0, scale: 1.12 }}
+                          animate={{ opacity: 0.70, scale: 1.02 }}
                           exit={{ opacity: 0 }}
                           transition={{ duration: 1.2, ease: "easeInOut" }}
-                          className="absolute inset-0 bg-cover bg-center mix-blend-overlay"
+                          className="absolute inset-0 bg-cover bg-center"
                           style={{ backgroundImage: `url(${heroSlides[currentHeroSlide].img})` }}
                         />
                       </AnimatePresence>
                     </div>
 
-                    {/* Dark gradient mask */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-900/80 to-transparent" />
+                    {/* Dark gradient mask for text readability while leaving image visible */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/95 via-neutral-900/70 to-neutral-900/30" />
                     
                     {/* Floating Left & Right manual controls (visible on hover) */}
                     <button
                       onClick={() => setCurrentHeroSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1))}
-                      className="absolute left-4 z-20 rounded-full bg-neutral-900/50 p-2 text-white/70 hover:text-white hover:bg-orange-600 border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto cursor-pointer"
+                      className="absolute left-4 md:left-8 z-20 rounded-full bg-neutral-900/60 p-3 text-white/70 hover:text-white hover:bg-orange-600 border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto cursor-pointer"
                     >
-                      <ChevronLeft className="h-5 w-5" />
+                      <ChevronLeft className="h-6 w-6" />
                     </button>
                     <button
                       onClick={() => setCurrentHeroSlide((prev) => (prev + 1) % heroSlides.length)}
-                      className="absolute right-4 z-20 rounded-full bg-neutral-900/50 p-2 text-white/70 hover:text-white hover:bg-orange-600 border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto cursor-pointer"
+                      className="absolute right-4 md:right-8 z-20 rounded-full bg-neutral-900/60 p-3 text-white/70 hover:text-white hover:bg-orange-600 border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto cursor-pointer"
                     >
-                      <ChevronRight className="h-5 w-5" />
+                      <ChevronRight className="h-6 w-6" />
                     </button>
 
-                    {/* Slide Content with Staggered Staged Entry */}
-                    <div className="relative max-w-2xl space-y-6 z-10">
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={currentHeroSlide}
-                          initial="hidden"
-                          animate="visible"
-                          exit="exit"
-                          variants={{
-                            hidden: { opacity: 0, y: 20 },
-                            visible: { 
-                              opacity: 1, 
-                              y: 0,
-                              transition: {
-                                staggerChildren: 0.15,
-                                delayChildren: 0.1
-                              }
-                            },
-                            exit: { opacity: 0, y: -15, transition: { duration: 0.2 } }
-                          }}
-                          className="space-y-6"
-                        >
-                          <motion.span 
+                    {/* Inner Content aligned to max-w-7xl grid */}
+                    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16 md:pt-36 md:pb-24 relative z-10">
+                      <div className="max-w-2xl space-y-6">
+                        <AnimatePresence mode="wait">
+                          <motion.div
+                            key={currentHeroSlide}
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
                             variants={{
-                              hidden: { opacity: 0, x: -15 },
-                              visible: { opacity: 1, x: 0 }
+                              hidden: { opacity: 0, y: 20 },
+                              visible: { 
+                                opacity: 1, 
+                                y: 0,
+                                transition: {
+                                  staggerChildren: 0.15,
+                                  delayChildren: 0.1
+                                }
+                              },
+                              exit: { opacity: 0, y: -15, transition: { duration: 0.2 } }
                             }}
-                            className="inline-flex items-center space-x-1 rounded-full bg-orange-500/15 border border-orange-500/30 px-3 py-1 text-xs font-bold text-orange-400"
+                            className="space-y-6"
                           >
-                            <Sparkles className="h-3.5 w-3.5 text-orange-500 animate-pulse" />
-                            <span>{heroSlides[currentHeroSlide].badge}</span>
-                          </motion.span>
-                          
-                          <motion.h1 
-                            variants={{
-                              hidden: { opacity: 0, y: 15 },
-                              visible: { opacity: 1, y: 0 }
-                            }}
-                            className="font-display text-4xl md:text-5xl font-extrabold tracking-tight leading-tight"
-                          >
-                            {heroSlides[currentHeroSlide].title} <br />
-                            <span className="text-orange-500">{heroSlides[currentHeroSlide].highlight}</span>
-                          </motion.h1>
-                          
-                          <motion.p 
-                            variants={{
-                              hidden: { opacity: 0, y: 15 },
-                              visible: { opacity: 1, y: 0 }
-                            }}
-                            className="text-sm md:text-base text-neutral-300 leading-relaxed font-sans"
-                          >
-                            {heroSlides[currentHeroSlide].desc}
-                          </motion.p>
-                          
-                          <motion.div 
-                            variants={{
-                              hidden: { opacity: 0, y: 15 },
-                              visible: { opacity: 1, y: 0 }
-                            }}
-                            className="flex flex-wrap gap-3.5 pt-2"
-                          >
-                            {currentHeroSlide === 2 ? (
-                              <button 
-                                onClick={() => setActiveView("services")}
-                                className="rounded-xl bg-orange-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-orange-700 hover:shadow-lg hover:shadow-orange-500/20 active:scale-95"
-                              >
-                                Explore Heavy Services
-                              </button>
-                            ) : (
-                              <button 
-                                onClick={() => setActiveView("projects")}
-                                className="rounded-xl bg-orange-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-orange-700 hover:shadow-lg hover:shadow-orange-500/20 active:scale-95"
-                              >
-                                Explore Projects
-                              </button>
-                            )}
-                            <button 
-                              onClick={() => handleOpenVisitWithProject()}
-                              className="rounded-xl border border-neutral-300 bg-white/10 backdrop-blur-sm px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white/20 active:scale-95"
+                            <motion.span 
+                              variants={{
+                                hidden: { opacity: 0, x: -15 },
+                                visible: { opacity: 1, x: 0 }
+                              }}
+                              className="inline-flex items-center space-x-1 rounded-full bg-orange-500/15 border border-orange-500/30 px-3 py-1 text-xs font-bold text-orange-400"
                             >
-                              Book Site Visit
-                            </button>
+                              <span>{heroSlides[currentHeroSlide].badge}</span>
+                            </motion.span>
+                            
+                            <motion.h1 
+                              variants={{
+                                hidden: { opacity: 0, y: 15 },
+                                visible: { opacity: 1, y: 0 }
+                              }}
+                              className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-orange-500"
+                            >
+                              {heroSlides[currentHeroSlide].title} <br />
+                              <span>{heroSlides[currentHeroSlide].highlight}</span>
+                            </motion.h1>
+                            
+                            <motion.p 
+                              variants={{
+                                hidden: { opacity: 0, y: 15 },
+                                visible: { opacity: 1, y: 0 }
+                              }}
+                              className="text-sm md:text-base lg:text-lg text-white font-medium drop-shadow-sm leading-relaxed font-sans max-w-xl"
+                            >
+                              {heroSlides[currentHeroSlide].desc}
+                            </motion.p>
+                            
+                            <motion.div 
+                              variants={{
+                                hidden: { opacity: 0, y: 15 },
+                                visible: { opacity: 1, y: 0 }
+                              }}
+                              className="flex flex-col sm:flex-row gap-3 pt-2"
+                            >
+                              {currentHeroSlide === 2 ? (
+                                <button 
+                                  onClick={() => setActiveView("services")}
+                                  className="w-full sm:w-auto text-center rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-7 py-3.5 text-sm font-semibold text-white transition-all hover:from-orange-600 hover:to-amber-600 hover:shadow-lg hover:shadow-orange-500/20 active:scale-95 shadow-md"
+                                >
+                                  Explore Heavy Services
+                                </button>
+                              ) : (
+                                <button 
+                                  onClick={() => setActiveView("projects")}
+                                  className="w-full sm:w-auto text-center rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 px-7 py-3.5 text-sm font-semibold text-white transition-all hover:from-orange-600 hover:to-amber-600 hover:shadow-lg hover:shadow-orange-500/20 active:scale-95 shadow-md"
+                                >
+                                  Explore Projects
+                                </button>
+                              )}
+                              <button 
+                                onClick={() => handleOpenVisitWithProject()}
+                                className="w-full sm:w-auto text-center rounded-xl border border-neutral-300 bg-white/10 backdrop-blur-sm px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-white/20 active:scale-95"
+                              >
+                                Book Site Visit
+                              </button>
+                            </motion.div>
                           </motion.div>
-                        </motion.div>
-                      </AnimatePresence>
-                    </div>
+                        </AnimatePresence>
+                      </div>
 
-                    {/* Progress indicators and slider dots */}
-                    <div className="absolute bottom-4 left-6 md:left-12 flex items-center space-x-3 z-10">
-                      {heroSlides.map((_, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => setCurrentHeroSlide(idx)}
-                          className={`h-2.5 rounded-full transition-all duration-300 ${
-                            currentHeroSlide === idx ? "bg-orange-500 w-8" : "bg-white/35 hover:bg-white/60 w-2.5"
-                          }`}
-                          aria-label={`Go to slide ${idx + 1}`}
-                        />
-                      ))}
+                      {/* Progress indicators and slider dots */}
+                      <div className="flex items-center space-x-3 pt-10">
+                        {heroSlides.map((_, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => setCurrentHeroSlide(idx)}
+                            className={`h-2.5 rounded-full transition-all duration-300 ${
+                              currentHeroSlide === idx ? "bg-orange-500 w-9" : "bg-white/35 hover:bg-white/60 w-2.5"
+                            }`}
+                            aria-label={`Go to slide ${idx + 1}`}
+                          />
+                        ))}
+                      </div>
                     </div>
 
                     {/* Slide automatic timer indicator */}
@@ -477,7 +476,9 @@ export default function App() {
                     </div>
                   </div>
 
-                  {/* Corporate counters */}
+                  {/* Home Page Content container */}
+                  <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-16">
+                    {/* Corporate counters */}
                   <div className="grid grid-cols-2 gap-4 md:grid-cols-6" id="home-counters">
                     {[
                       { val: "10+ Years", label: "Civic Experience" },
@@ -487,9 +488,9 @@ export default function App() {
                       { val: "25+", label: "Architects & Engineers" },
                       { val: "500K+", label: "Sq.ft Developed" }
                     ].map((st) => (
-                      <div key={st.label} className="rounded-2xl border border-neutral-200 bg-white p-4 text-center shadow-sm">
+                      <div key={st.label} className="rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white p-4 text-center shadow-md hover:shadow-lg transition-all">
                         <span className="block font-display text-lg md:text-xl font-extrabold text-orange-600">{st.val}</span>
-                        <span className="block text-[10px] font-mono tracking-wider text-neutral-400 uppercase mt-1">{st.label}</span>
+                        <span className="block text-[10px] font-display tracking-wider text-neutral-600 uppercase mt-1 font-semibold">{st.label}</span>
                       </div>
                     ))}
                   </div>
@@ -510,8 +511,8 @@ export default function App() {
                       ].map((item) => {
                         const Icon = item.icon;
                         return (
-                          <div key={item.title} className="rounded-2xl border border-neutral-200 bg-white p-5 space-y-3 shadow-sm hover:border-neutral-300 transition-all">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50 text-orange-600">
+                          <div key={item.title} className="rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white p-5 space-y-3 shadow-md hover:border-orange-300 hover:shadow-lg transition-all">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
                               <Icon className="h-5 w-5" />
                             </div>
                             <h3 className="font-display text-base font-bold text-neutral-900">{item.title}</h3>
@@ -542,7 +543,7 @@ export default function App() {
                   </div>
 
                   {/* Core Process diagram */}
-                  <div className="space-y-6 rounded-2xl bg-neutral-900 p-6 md:p-10 text-white border border-neutral-800 relative overflow-hidden">
+                  <div className="space-y-6 rounded-2xl bg-gradient-to-br from-neutral-600 via-neutral-800 to-neutral-950 p-6 md:p-10 text-white border border-neutral-600/50 relative overflow-hidden shadow-md">
                     <div className="text-center space-y-1 max-w-lg mx-auto mb-10">
                       <span className="text-xs font-mono tracking-widest text-orange-400 uppercase">OUR TRANSPARENT BLUEPRINT</span>
                       <h3 className="font-display text-xl font-bold text-white">How NH Homes Delivers Your Key</h3>
@@ -588,15 +589,15 @@ export default function App() {
                   </div>
 
                   {/* Quick CTAs footer banner */}
-                  <div className="rounded-3xl bg-orange-600 p-8 text-white text-center space-y-4 shadow-xl shadow-orange-500/10">
-                    <h3 className="font-display text-xl md:text-2xl font-bold">Ready to Build Your Architectural Milestone?</h3>
-                    <p className="text-xs text-orange-100 max-w-lg mx-auto leading-relaxed">
+                  <div className="rounded-3xl bg-gradient-to-r from-orange-500 via-orange-400 to-amber-400 p-8 md:p-10 text-white text-center space-y-4 shadow-xl shadow-orange-500/20 border border-orange-300">
+                    <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight text-white drop-shadow-sm">Ready to Build Your Architectural Milestone?</h3>
+                    <p className="text-xs text-orange-50 max-w-lg mx-auto leading-relaxed font-medium">
                       Connect with H Charles Immanuvel and S Prasanna's executive design committee. Schedule a free legal screening of your land documents, discuss earth mover excavation packages, or book a site visit today.
                     </p>
                     <div className="flex justify-center gap-3 pt-2">
                       <button 
                         onClick={() => handleOpenVisitWithProject()}
-                        className="rounded-xl bg-neutral-900 text-white font-semibold text-xs px-6 py-3 hover:bg-neutral-800 transition-colors"
+                        className="rounded-xl bg-neutral-900 text-white font-semibold text-xs px-6 py-3 hover:bg-neutral-800 transition-colors shadow-md"
                       >
                         Book Consultation
                       </button>
@@ -604,19 +605,19 @@ export default function App() {
                         href="https://wa.me/919884770108" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="rounded-xl bg-white text-orange-600 border border-white font-semibold text-xs px-6 py-3 hover:bg-orange-50 transition-colors"
+                        className="rounded-xl bg-white text-orange-600 border border-white font-semibold text-xs px-6 py-3 hover:bg-orange-50 transition-colors shadow-md"
                       >
                         WhatsApp Instant Chat
                       </a>
                     </div>
                   </div>
                 </div>
-              )}
-
+              </div>
+            )}
 
               {/* ================= PROJECTS VIEW ================= */}
               {activeView === "projects" && (
-                <div className="space-y-8" id="projects-view-container">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-10 md:pt-40 md:pb-16 space-y-8" id="projects-view-container">
                   <div className="space-y-1.5">
                     <span className="text-xs font-mono font-bold tracking-widest text-orange-600 uppercase">PORTFOLIO</span>
                     <h2 className="font-display text-2xl font-bold text-neutral-900">NH Homes Signature Developments</h2>
@@ -629,7 +630,7 @@ export default function App() {
 
               {/* ================= SERVICES VIEW ================= */}
               {activeView === "services" && (
-                <div className="space-y-12" id="services-view-container">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-10 md:pt-40 md:pb-16 space-y-12" id="services-view-container">
                   <div className="space-y-1.5">
                     <span className="text-xs font-mono font-bold tracking-widest text-orange-600 uppercase">SERVICES</span>
                     <h2 className="font-display text-2xl font-bold text-neutral-900">Our Comprehensive Real Estate Services</h2>
@@ -640,7 +641,7 @@ export default function App() {
                     {services.map((srv) => (
                       <div 
                         key={srv.id} 
-                        className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm space-y-4 hover:shadow-md transition-all flex flex-col justify-between"
+                        className="rounded-2xl border border-orange-100/80 bg-gradient-to-br from-orange-100/70 via-orange-50/20 to-white p-6 shadow-sm space-y-4 hover:shadow-md transition-all flex flex-col justify-between"
                         id={`service-detail-${srv.id}`}
                       >
                         <div className="space-y-3">
@@ -680,7 +681,7 @@ export default function App() {
 
               {/* ================= CONSTRUCTION & ESTIMATORS ================= */}
               {activeView === "construction" && (
-                <div className="space-y-12" id="construction-view-container">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-10 md:pt-40 md:pb-16 space-y-12" id="construction-view-container">
                   <div className="space-y-1.5">
                     <span className="text-xs font-mono font-bold tracking-widest text-orange-600 uppercase">ESTIMATORS & ESTIMATES</span>
                     <h2 className="font-display text-2xl font-bold text-neutral-900">Custom Home Construction Packages & Cost Estimators</h2>
@@ -698,7 +699,7 @@ export default function App() {
 
               {/* ================= JOINT VENTURE VIEW ================= */}
               {activeView === "joint-venture" && (
-                <div id="joint-venture-view-container">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-10 md:pt-40 md:pb-16 space-y-12" id="joint-venture-view-container">
                   <JointVentureSection onSubmitLead={handleSubmitLead} />
                 </div>
               )}
@@ -706,7 +707,7 @@ export default function App() {
 
               {/* ================= ABOUT US VIEW ================= */}
               {activeView === "about" && (
-                <div className="space-y-16" id="about-view-container">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-10 md:pt-40 md:pb-16 space-y-16" id="about-view-container">
                   {/* Company Story */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div className="space-y-4">
@@ -734,7 +735,7 @@ export default function App() {
                   </div>
 
                   {/* Chairman Message */}
-                  <div className="rounded-2xl border border-neutral-200 bg-white p-6 md:p-8 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                  <div className="rounded-2xl border border-orange-100/80 bg-gradient-to-br from-orange-100/70 via-orange-50/20 to-white p-6 md:p-8 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                     <div className="md:col-span-4 flex flex-col items-center text-center">
                       <div className="h-32 w-32 rounded-full overflow-hidden border-2 border-orange-500 bg-neutral-50">
                         <img referrerPolicy="no-referrer" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="Er. Nehemiah Nesanathan" className="w-full h-full object-cover" />
@@ -765,7 +766,7 @@ export default function App() {
                         { title: "ISO 9001:2015 Cert.", desc: "Quality Management System standards certified for construction execution." },
                         { title: "Licensed Civil Counsel", desc: "Direct legal clearance panel for document validation." }
                       ].map(c => (
-                        <div key={c.title} className="rounded-xl border border-neutral-100 bg-neutral-50 p-4 text-center">
+                        <div key={c.title} className="rounded-xl border border-orange-100/80 bg-gradient-to-br from-orange-100/70 via-orange-50/20 to-white p-4 text-center shadow-sm">
                           <span className="font-display text-sm font-bold text-neutral-900 block">{c.title}</span>
                           <span className="text-[11px] text-neutral-500 block leading-relaxed mt-1">{c.desc}</span>
                         </div>
@@ -801,7 +802,7 @@ export default function App() {
 
               {/* ================= CONTACT US VIEW ================= */}
               {activeView === "contact" && (
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start" id="contact-view-container">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-10 md:pt-40 md:pb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start" id="contact-view-container">
                   {/* Left: Contact Form */}
                   <div className="lg:col-span-7 rounded-2xl border border-neutral-200 bg-white p-6 md:p-8 shadow-sm space-y-4">
                     <div className="space-y-1">
@@ -862,7 +863,7 @@ export default function App() {
 
                       <button
                         type="submit"
-                        className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs py-3 rounded-lg transition-colors flex items-center justify-center space-x-1.5 shadow-md hover:shadow-lg hover:shadow-orange-500/20"
+                        className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold text-xs py-3 rounded-lg transition-all flex items-center justify-center space-x-1.5 shadow-md hover:shadow-lg hover:shadow-orange-500/20"
                       >
                         <Mail className="h-4.5 w-4.5" />
                         <span>Send Corporate Query</span>
@@ -935,7 +936,7 @@ export default function App() {
 
               {/* ================= CUSTOMER PORTAL VIEW ================= */}
               {activeView === "portal" && (
-                <div id="customer-portal-container">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-10 md:pt-40 md:pb-16" id="customer-portal-container">
                   <CustomerPortal onSubmitLead={handleSubmitLead} />
                 </div>
               )}
@@ -943,17 +944,14 @@ export default function App() {
 
               {/* ================= DEVELOPER ADMIN DASHBOARD ================= */}
               {activeView === "admin" && (
-                <div id="admin-dashboard-active-view">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-10 md:pt-40 md:pb-16" id="admin-dashboard-active-view">
                   <AdminDashboard />
                 </div>
               )}
 
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Collapsible FAQ Section at bottom of specific main landing views */}
+              {/* Collapsible FAQ Section at bottom of specific main landing views */}
           {(activeView === "home" || activeView === "about" || activeView === "construction") && (
-            <div className="mt-20 space-y-6" id="global-faqs-accordion">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-16 md:mt-20 mb-12 space-y-6" id="global-faqs-accordion">
               <div className="text-center max-w-md mx-auto space-y-1">
                 <span className="text-xs font-mono font-bold tracking-widest text-orange-600 uppercase font-bold">FAQS</span>
                 <h3 className="font-display text-xl font-bold text-neutral-900">Frequently Asked Questions</h3>
@@ -988,7 +986,7 @@ export default function App() {
 
           {/* Careers Sub-Section under About view */}
           {activeView === "about" && (
-            <div className="mt-20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start border-t border-neutral-200 pt-16" id="careers-section">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-16 md:mt-20 mb-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start border-t border-neutral-200 pt-16" id="careers-section">
               <div className="lg:col-span-6 space-y-4">
                 <span className="text-xs font-mono font-bold tracking-widest text-orange-600 uppercase">CAREERS</span>
                 <h3 className="font-display text-2xl font-bold text-neutral-900">Join Nehemiah's Engineering Committee</h3>
@@ -1176,71 +1174,48 @@ export default function App() {
             </div>
           )}
 
-          {/* Testimonials Review carousel on Home page */}
+          {/* Testimonials Review section on Home page */}
           {activeView === "home" && (
-            <div className="mt-20 space-y-6" id="global-testimonials">
-              <div className="text-center max-w-md mx-auto space-y-1">
-                <span className="text-xs font-mono font-bold tracking-widest text-orange-600 uppercase">CLIENT TESTIMONIES</span>
-                <h3 className="font-display text-xl font-bold text-neutral-900">What Our Happy Homeowners Say</h3>
-                <p className="text-xs text-neutral-500">Uncompromising opinions from elite families who purchased residential flats and villas.</p>
+            <div className="mt-10 mb-16 md:mt-20 md:mb-32 space-y-4 md:space-y-6" id="global-testimonials">
+              <div className="text-center max-w-md mx-auto space-y-1 px-4">
+                <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-orange-600 uppercase">CLIENT TESTIMONIES</span>
+                <h3 className="font-display text-lg sm:text-xl font-bold text-neutral-900">What Our Happy Homeowners Say</h3>
+                <p className="text-[11px] sm:text-xs text-neutral-500">Uncompromising opinions from elite families who purchased residential flats and villas.</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 pt-1 max-w-5xl mx-auto px-2 sm:px-0">
                 {testimonials.map((t) => (
-                  <div key={t.name} className="rounded-2xl border border-neutral-200 bg-white p-5 space-y-3.5 shadow-sm">
-                    <div className="flex justify-between items-center">
-                      <div className="flex space-x-0.5">
-                        {[...Array(t.rating)].map((_, i) => (
-                          <span key={i} className="text-orange-500 font-bold text-sm">★</span>
-                        ))}
+                  <div key={t.name} className="rounded-xl border border-orange-200 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white p-3 sm:p-4 space-y-2 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div className="space-y-1.5">
+                      <div className="flex justify-between items-center">
+                        <div className="flex space-x-0.5">
+                          {[...Array(t.rating)].map((_, i) => (
+                            <span key={i} className="text-orange-500 font-bold text-[10px] sm:text-xs">★</span>
+                          ))}
+                        </div>
+                        <span className="text-[8px] sm:text-[9px] font-mono tracking-wider bg-white/80 border border-orange-200 text-orange-700 px-1.5 py-0.5 rounded-full font-bold">
+                          {t.project.split(" ")[1]}
+                        </span>
                       </div>
-                      <span className="text-[9px] font-mono tracking-wider bg-orange-50 border border-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-bold">
-                        {t.project.split(" ")[1]}
-                      </span>
+                      <p className="text-[10px] sm:text-[11px] text-neutral-700 leading-snug italic text-justify">
+                        "{t.quote}"
+                      </p>
                     </div>
-                    <p className="text-xs text-neutral-600 leading-relaxed italic text-justify">
-                      "{t.quote}"
-                    </p>
-                    <div className="pt-2 border-t border-neutral-100">
+                    <div className="pt-1.5 border-t border-orange-200/60">
                       <h4 className="font-display text-xs font-bold text-neutral-900">{t.name}</h4>
-                      <span className="block text-[10px] text-neutral-400 mt-0.5">{t.role}</span>
+                      <span className="block text-[8px] sm:text-[9px] text-neutral-500 mt-0.5 font-semibold">{t.role}</span>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
           )}
-
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       {/* Corporate Footer */}
       <Footer setActiveView={setActiveView} onSubmitLead={handleSubmitLead} />
-
-      {/* Floating Action Buttons: Click to Call & WhatsApp integrations */}
-      <div className="fixed bottom-24 right-6 z-40 flex flex-col space-y-2 select-none">
-        <a 
-          href="tel:+919876543210" 
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-900 text-white shadow-lg hover:scale-105 active:scale-95 transition-all"
-          title="Call Corporate Liaison"
-          aria-label="Call Support"
-        >
-          <Phone className="h-5 w-5" />
-        </a>
-        <a 
-          href="https://wa.me/919876543210" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-green-600 text-white shadow-lg hover:scale-105 active:scale-95 transition-all"
-          title="WhatsApp Sales Committee"
-          aria-label="WhatsApp Support"
-        >
-          <MessageSquare className="h-5 w-5" />
-        </a>
-      </div>
-
-      {/* Immersive 24/7 AI Property Assistant floating component */}
-      <AIChatbot />
 
       {/* Book Site Visit Modal */}
       <BookSiteVisitModal 

@@ -18,27 +18,27 @@ export default function BlogsSection() {
   return (
     <div className="space-y-8" id="blogs-section-module">
       {/* Search and category filter toolbar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-neutral-200">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white p-4 sm:p-5 rounded-2xl border border-orange-200 shadow-md">
         <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search construction tips or investment guides..."
-            className="w-full pl-9 pr-4 py-2 border border-neutral-200 rounded-xl focus:border-orange-500 outline-none text-sm"
+            className="w-full pl-10 pr-4 py-2.5 bg-white border border-neutral-200 rounded-xl focus:border-orange-500 outline-none text-sm shadow-sm"
           />
         </div>
 
-        <div className="flex flex-wrap gap-1.5 text-xs font-semibold">
+        <div className="flex flex-wrap gap-2 text-xs font-semibold">
           {["All", "Government Approval Guide", "Property Investment", "Construction Tips"].map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat as any)}
-              className={`px-3 py-1.5 rounded-lg border transition-all ${
+              className={`px-3.5 py-2 rounded-xl border transition-all ${
                 selectedCategory === cat
-                  ? "bg-neutral-950 border-neutral-900 text-white shadow-sm"
-                  : "bg-white border-neutral-200 text-neutral-600 hover:border-neutral-300"
+                  ? "bg-neutral-950 border-neutral-900 text-white shadow-md font-bold"
+                  : "bg-white border-neutral-200 text-neutral-600 hover:border-neutral-300 hover:bg-neutral-50"
               }`}
             >
               {cat === "All" ? "All Reading" : cat}
@@ -48,35 +48,38 @@ export default function BlogsSection() {
       </div>
 
       {/* Grid List */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
         {filteredBlogs.map((b) => (
           <div
             key={b.id}
-            className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-neutral-200 bg-white transition-all duration-300 hover:shadow-xl hover:border-neutral-300"
+            className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white transition-all duration-300 hover:shadow-xl hover:border-orange-300"
             id={`blog-card-${b.id}`}
           >
-            {/* Blog Image */}
-            <div className="relative h-44 overflow-hidden bg-neutral-100 shrink-0">
+            {/* Blog Image Header */}
+            <div className="relative h-48 overflow-hidden bg-neutral-100 shrink-0">
               <img
                 referrerPolicy="no-referrer"
                 src={b.image}
-                alt={b.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                alt=""
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80";
+                }}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <span className="absolute top-3 left-3 bg-neutral-900/80 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold text-white tracking-wider uppercase">
+              <span className="absolute top-3 left-3 bg-neutral-950/85 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-mono font-bold text-white tracking-wider uppercase shadow-md border border-white/10">
                 {b.category}
               </span>
             </div>
 
-            {/* Content info */}
-            <div className="p-5 flex-1 flex flex-col justify-between">
-              <div className="space-y-2">
-                <div className="flex items-center space-x-1.5 text-[10px] text-neutral-400 font-mono">
+            {/* Content info Body */}
+            <div className="p-5 md:p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div className="space-y-2.5">
+                <div className="flex items-center space-x-2 text-[11px] text-neutral-500 font-mono font-semibold">
                   <span>{b.date}</span>
                   <span>•</span>
                   <span>{b.readTime}</span>
                 </div>
-                <h3 className="font-display text-base font-bold text-neutral-900 group-hover:text-orange-600 transition-colors line-clamp-2">
+                <h3 className="font-display text-base md:text-lg font-bold text-neutral-900 group-hover:text-orange-600 transition-colors line-clamp-2 leading-snug">
                   {b.title}
                 </h3>
                 <p className="text-xs text-neutral-600 line-clamp-3 leading-relaxed">
@@ -86,7 +89,7 @@ export default function BlogsSection() {
 
               <button
                 onClick={() => setSelectedBlog(b)}
-                className="mt-4 pt-3.5 border-t border-neutral-100 flex items-center justify-between text-xs font-semibold text-orange-600 group-hover:text-orange-700 transition-colors"
+                className="pt-4 border-t border-neutral-100 flex items-center justify-between text-xs font-bold text-orange-600 group-hover:text-orange-700 transition-colors"
               >
                 <span>Read Full Article</span>
                 <ArrowRight className="h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
@@ -99,9 +102,9 @@ export default function BlogsSection() {
       {/* Blog Article Detail Reader Modal */}
       {selectedBlog && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm" id="blog-reader-modal">
-          <div className="relative w-full max-w-2xl bg-white shadow-2xl rounded-2xl border border-neutral-100 overflow-hidden flex flex-col max-h-[85vh]">
-            {/* Top sticky title panel */}
-            <div className="bg-neutral-950 px-6 py-5 text-white flex justify-between items-start gap-4 shrink-0">
+          <div className="relative flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl border border-neutral-200" onClick={(e) => e.stopPropagation()}>
+          {/* Header */}
+          <div className="bg-gradient-to-br from-neutral-600 via-neutral-800 to-neutral-950 px-6 py-5 text-white flex justify-between items-start gap-4 shrink-0 border-b border-neutral-600/50">
               <div>
                 <span className="text-[9px] font-mono tracking-widest text-orange-400 uppercase">
                   NH READERS LOBBY

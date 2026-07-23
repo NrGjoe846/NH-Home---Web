@@ -177,8 +177,8 @@ export default function CustomerPortal({ onSubmitLead }: CustomerPortalProps) {
 
   return (
     <div className="space-y-8" id="customer-portal-active-view">
-      {/* Client Welcome Banner */}
-      <div className="rounded-2xl bg-neutral-900 p-6 text-white md:p-8 relative overflow-hidden">
+      {/* Portal Header */}
+      <div className="rounded-2xl bg-gradient-to-br from-neutral-600 via-neutral-800 to-neutral-950 p-4 sm:p-6 md:p-8 text-white relative overflow-hidden border border-neutral-600/50 shadow-xl">
         <div className="absolute top-0 right-0 h-32 w-32 translate-x-8 -translate-y-8 rounded-full bg-orange-500/10 blur-xl" />
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -204,7 +204,7 @@ export default function CustomerPortal({ onSubmitLead }: CustomerPortalProps) {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
         {/* Left Column: Live Progress Timeline */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+          <div className="rounded-2xl border border-neutral-200 bg-white p-4 sm:p-6 shadow-sm">
             <div className="flex justify-between items-center mb-6">
               <div>
                 <h3 className="font-display text-base font-bold text-neutral-900">Live Construction Updates</h3>

@@ -303,7 +303,7 @@ export const blogs: Blog[] = [
     content: "When developing property in Tamil Nadu, securing government approvals is the most critical hurdle. Chennai and its surrounding areas are governed by two major planning authorities: CMDA (Chennai Metropolitan Development Authority) and DTCP (Directorate of Town and Country Planning). \n\nCMDA covers the Chennai Metropolitan Area which spans Chennai district, parts of Thiruvallur, and Kancheepuram districts. On the other hand, DTCP covers the rest of Tamil Nadu outside of the Chennai Metropolitan limits.\n\nBuilding without these approvals is extremely risky: banks will strictly refuse to issue home loans, government bodies can issue demolition notices, and you cannot secure electricity, water, or sewerage connections. A clean approval ensures that your property adheres to local FSI (Floor Space Index) and OSR (Open Space Reservation) regulations, safeguarding your investment for life.",
     date: "July 12, 2026",
     readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "blog-2",

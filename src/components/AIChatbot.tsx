@@ -112,7 +112,7 @@ export default function AIChatbot() {
             className="mb-4 flex h-[500px] w-80 flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-2xl sm:w-96"
           >
             {/* Header */}
-            <div className="flex items-center justify-between bg-neutral-900 px-4 py-4 text-white">
+            <div className="flex items-center justify-between bg-gradient-to-br from-neutral-600 via-neutral-800 to-neutral-950 px-4 py-4 text-white border-b border-neutral-600/50">
               <div className="flex items-center space-x-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-orange-600">
                   <Sparkles className="h-4.5 w-4.5 text-white" />

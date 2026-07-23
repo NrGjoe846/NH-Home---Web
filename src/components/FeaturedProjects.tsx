@@ -48,7 +48,7 @@ export default function FeaturedProjects({ onBookSiteVisit }: FeaturedProjectsPr
   return (
     <div className="space-y-8" id="featured-projects-module">
       {/* Filters Toolbar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-neutral-200">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white p-4 rounded-2xl border border-orange-200 shadow-md">
         {/* Search */}
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
@@ -83,7 +83,7 @@ export default function FeaturedProjects({ onBookSiteVisit }: FeaturedProjectsPr
               onClick={() => setActiveStatus(status as any)}
               className={`px-3 py-1.5 rounded-lg border transition-all ${
                 activeStatus === status
-                  ? "bg-orange-600 border-orange-600 text-white shadow-sm"
+                  ? "bg-gradient-to-r from-orange-500 to-amber-500 border-orange-500 text-white shadow-sm font-bold"
                   : "bg-white border-neutral-200 text-neutral-600 hover:border-neutral-300"
               }`}
             >
@@ -98,7 +98,7 @@ export default function FeaturedProjects({ onBookSiteVisit }: FeaturedProjectsPr
         {filteredProjects.map((p) => (
           <div
             key={p.id}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-neutral-200 bg-white transition-all duration-300 hover:shadow-xl hover:border-neutral-300"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white transition-all duration-300 hover:shadow-xl hover:border-orange-300"
             id={`project-card-${p.id}`}
           >
             {/* Image Wrap */}
@@ -130,7 +130,7 @@ export default function FeaturedProjects({ onBookSiteVisit }: FeaturedProjectsPr
                   <span className="truncate">{p.location.split(",")[0]}</span>
                 </div>
                 <h3 className="font-display text-base font-bold text-neutral-900 truncate">{p.name}</h3>
-                <span className="block font-mono text-[10px] tracking-widest text-neutral-500 uppercase">
+                <span className="block font-display text-[11px] font-semibold tracking-wider text-orange-600">
                   {p.category} • {p.area}
                 </span>
                 <p className="text-xs text-neutral-600 line-clamp-2 leading-relaxed pt-1">
@@ -140,8 +140,8 @@ export default function FeaturedProjects({ onBookSiteVisit }: FeaturedProjectsPr
 
               <div className="mt-4 pt-3.5 border-t border-neutral-100 flex items-center justify-between">
                 <div>
-                  <span className="block text-[9px] font-mono text-neutral-400 tracking-wider uppercase">VALUE PLAN</span>
-                  <span className="text-xs font-bold text-neutral-900 font-mono">{p.price.split(" ")[2] || "₹30L+"} Lakhs</span>
+                  <span className="block text-[9px] font-display text-neutral-400 tracking-wider uppercase font-semibold">VALUE PLAN</span>
+                  <span className="text-xs font-bold text-neutral-900 font-display">{p.price.split(" ")[2] || "₹30L+"} Lakhs</span>
                 </div>
                 <button
                   onClick={() => setSelectedProject(p)}
@@ -290,7 +290,7 @@ export default function FeaturedProjects({ onBookSiteVisit }: FeaturedProjectsPr
                       />
                       <button
                         type="submit"
-                        className="bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs rounded-lg px-4 py-1.5 transition-colors flex items-center space-x-1 shrink-0"
+                        className="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold text-xs rounded-lg px-4 py-1.5 transition-all flex items-center space-x-1 shrink-0 shadow-md"
                       >
                         <Download className="h-3.5 w-3.5" />
                         <span>Download</span>
@@ -307,7 +307,7 @@ export default function FeaturedProjects({ onBookSiteVisit }: FeaturedProjectsPr
                     setSelectedProject(null);
                     onBookSiteVisit(selectedProject.id);
                   }}
-                  className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold text-sm py-3 rounded-xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-orange-500/20"
+                  className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold text-sm py-3 rounded-xl transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-orange-500/20"
                 >
                   <PhoneCall className="h-4 w-4" />
                   <span>Book Private Site Visit</span>

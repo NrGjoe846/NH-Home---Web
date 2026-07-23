@@ -49,7 +49,7 @@ export default function LoanEMICalculator() {
   ];
 
   return (
-    <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm md:p-8" id="emi-calculator-container">
+    <div className="rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white p-6 shadow-md md:p-8" id="emi-calculator-container">
       <div className="mb-6 flex items-center space-x-3">
         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-100 text-orange-600">
           <Landmark className="h-5 w-5" />
@@ -204,7 +204,7 @@ export default function LoanEMICalculator() {
                 NH Preferred Loan Partners
               </h4>
             </div>
-            <div className="grid grid-cols-5 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
               {partnerBanks.map((bank) => (
                 <div 
                   key={bank.name}

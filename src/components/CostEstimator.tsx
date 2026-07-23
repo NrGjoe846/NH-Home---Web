@@ -65,7 +65,7 @@ export default function CostEstimator({ onSubmitLead }: CostEstimatorProps) {
   };
 
   return (
-    <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm md:p-8" id="cost-estimator-container">
+    <div className="rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white p-6 shadow-md md:p-8" id="cost-estimator-container">
       <div className="mb-6 flex items-center space-x-3">
         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-100 text-orange-600">
           <Calculator className="h-5 w-5" />
@@ -181,7 +181,8 @@ export default function CostEstimator({ onSubmitLead }: CostEstimatorProps) {
 
         {/* Dynamic Cost Breakdown & Enquiry */}
         <div className="lg:col-span-5 flex flex-col justify-between">
-          <div className="rounded-xl bg-neutral-900 p-5 text-white shadow-md">
+          {/* Results Summary Box */}
+          <div className="rounded-xl bg-gradient-to-br from-neutral-600 via-neutral-800 to-neutral-950 p-5 text-white border border-neutral-600/50 shadow-md">
             <span className="text-[10px] font-mono tracking-widest text-neutral-400 uppercase">
               ESTIMATED PROJECT COST
             </span>
@@ -251,7 +252,7 @@ export default function CostEstimator({ onSubmitLead }: CostEstimatorProps) {
                 />
                 <button
                   type="submit"
-                  className="rounded-lg bg-orange-600 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-orange-700 hover:shadow-md flex items-center space-x-1 shrink-0"
+                  className="rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 px-4 py-2 text-xs font-semibold text-white transition-all shadow-md flex items-center space-x-1 shrink-0"
                 >
                   <span>Submit</span>
                   <ArrowRight className="h-3.5 w-3.5" />

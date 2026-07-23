@@ -68,7 +68,7 @@ export default function JointVentureSection({ onSubmitLead }: JointVentureSectio
   return (
     <div className="space-y-12" id="joint-venture-section-module">
       {/* Intro Banner */}
-      <div className="rounded-2xl bg-neutral-950 p-6 md:p-10 text-white relative overflow-hidden">
+      <div className="rounded-2xl bg-gradient-to-br from-neutral-600 via-neutral-800 to-neutral-950 p-4 sm:p-6 md:p-10 text-white relative overflow-hidden border border-neutral-600/50 shadow-xl">
         <div className="absolute inset-0 bg-gradient-to-r from-orange-600/10 via-transparent to-transparent" />
         <div className="relative max-w-3xl space-y-3">
           <span className="flex items-center space-x-1.5 text-orange-400 font-mono text-[10px] tracking-widest uppercase font-bold">
@@ -89,7 +89,7 @@ export default function JointVentureSection({ onSubmitLead }: JointVentureSectio
         {jvBenefits.map((b) => {
           const Icon = b.icon;
           return (
-            <div key={b.title} className="flex gap-4 rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+            <div key={b.title} className="flex gap-4 rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white p-4 sm:p-5 shadow-md hover:border-orange-300 transition-all">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
                 <Icon className="h-5 w-5" />
               </div>
@@ -105,7 +105,7 @@ export default function JointVentureSection({ onSubmitLead }: JointVentureSectio
       {/* Main JV Flow and Form */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left: Interactive Form */}
-        <div className="lg:col-span-5 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+        <div className="lg:col-span-5 rounded-2xl border border-orange-200 bg-gradient-to-br from-orange-200 via-orange-50/60 to-white p-4 sm:p-6 shadow-md">
           <div className="flex items-center space-x-2.5 mb-4">
             <Handshake className="h-5 w-5 text-orange-600 shrink-0" />
             <h3 className="font-display text-base font-bold text-neutral-900">Land Valuation Form</h3>
@@ -219,7 +219,7 @@ export default function JointVentureSection({ onSubmitLead }: JointVentureSectio
 
             <button
               type="submit"
-              className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold text-xs py-2.5 rounded-lg transition-colors flex items-center justify-center space-x-1.5"
+              className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold text-xs py-2.5 rounded-lg transition-all flex items-center justify-center space-x-1.5 shadow-md"
             >
               <span>Submit Land for Evaluation</span>
               <ArrowRight className="h-4 w-4" />
@@ -235,7 +235,7 @@ export default function JointVentureSection({ onSubmitLead }: JointVentureSectio
         </div>
 
         {/* Right: Step-by-Step Joint Venture Roadmap */}
-        <div className="lg:col-span-7 bg-neutral-900 rounded-2xl p-6 text-white border border-neutral-800 shadow-xl self-stretch flex flex-col justify-between">
+        <div className="lg:col-span-7 bg-gradient-to-br from-neutral-600 via-neutral-800 to-neutral-950 rounded-2xl p-6 text-white border border-neutral-600/50 shadow-xl self-stretch flex flex-col justify-between">
           <div>
             <span className="text-[10px] font-mono tracking-widest text-orange-400 uppercase">
               NH PROCESS ROADMAP
