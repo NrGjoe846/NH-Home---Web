@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search, Clock, ArrowRight, Eye, X, BookOpen, Share2 } from "lucide-react";
 import { Blog } from "../types";
 import { blogs } from "../data/projects";
@@ -7,6 +7,23 @@ export default function BlogsSection() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<"All" | "Government Approval Guide" | "Property Investment" | "Construction Tips">("All");
   const [selectedBlog, setSelectedBlog] = useState<Blog | null>(null);
+
+  useEffect(() => {
+    if (selectedBlog) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [selectedBlog]);
 
   const filteredBlogs = blogs.filter((b) => {
     const matchesSearch = b.title.toLowerCase().includes(search.toLowerCase()) || 
@@ -101,8 +118,8 @@ export default function BlogsSection() {
 
       {/* Blog Article Detail Reader Modal */}
       {selectedBlog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm" id="blog-reader-modal">
-          <div className="relative flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl border border-neutral-200" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm overscroll-contain" id="blog-reader-modal">
+          <div className="relative flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl border border-neutral-200 overscroll-contain" onClick={(e) => e.stopPropagation()}>
           {/* Header */}
           <div className="bg-gradient-to-br from-neutral-600 via-neutral-800 to-neutral-950 px-6 py-5 text-white flex justify-between items-start gap-4 shrink-0 border-b border-neutral-600/50">
               <div>

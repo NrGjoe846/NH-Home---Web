@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Search, MapPin, Sparkles, Eye, Download, PhoneCall, ArrowRight, X, Heart, Shield, School, Hospital, Compass, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Project } from "../types";
@@ -13,6 +13,23 @@ export default function FeaturedProjects({ onBookSiteVisit }: FeaturedProjectsPr
   const [activeCategory, setActiveCategory] = useState<"All" | "Apartment" | "Villa" | "Residential">("All");
   const [activeStatus, setActiveStatus] = useState<"All" | "Ongoing" | "Upcoming" | "Completed">("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [selectedProject]);
   
   // Brochure download simulation
   const [brochureEmail, setBrochureEmail] = useState("");
@@ -159,13 +176,13 @@ export default function FeaturedProjects({ onBookSiteVisit }: FeaturedProjectsPr
       {/* Immersive Project Drawer Modal */}
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/60 p-0 sm:p-4 backdrop-blur-sm" id="project-details-modal">
+          <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/60 p-0 sm:p-4 backdrop-blur-sm overscroll-contain" id="project-details-modal">
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="relative w-full max-w-xl h-full bg-white shadow-2xl overflow-y-auto flex flex-col justify-between sm:rounded-2xl border-l border-neutral-200"
+              className="relative w-full max-w-xl h-full bg-white shadow-2xl overflow-y-auto overscroll-contain flex flex-col justify-between sm:rounded-2xl border-l border-neutral-200"
             >
               {/* Top sticky bar */}
               <div className="sticky top-0 z-10 flex items-center justify-between bg-white/95 px-6 py-4 border-b border-neutral-200 backdrop-blur-md">

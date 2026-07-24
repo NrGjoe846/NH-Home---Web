@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X, Calendar, Clock, MapPin, CheckCircle, Sparkles, AlertTriangle } from "lucide-react";
 import { signatureProjects } from "../data/projects";
 
@@ -23,6 +23,23 @@ export default function BookSiteVisitModal({
   const [phone, setPhone] = useState("");
   const [notes, setNotes] = useState("");
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -59,8 +76,8 @@ export default function BookSiteVisitModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm" id="book-visit-modal-container">
-      <div className="relative w-full max-w-lg rounded-2xl bg-white shadow-2xl border border-neutral-100 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm overscroll-contain" id="book-visit-modal-container">
+      <div className="relative w-full max-w-lg rounded-2xl bg-white shadow-2xl border border-neutral-100 overflow-hidden overscroll-contain">
         {/* Header */}
         <div className="bg-gradient-to-br from-neutral-600 via-neutral-800 to-neutral-950 px-6 py-5 text-white border-b border-neutral-600/50">
           <button
